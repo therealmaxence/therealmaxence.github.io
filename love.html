@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="love.css">
+    <link rel="icon" type="image/png" href="heart.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOVE</title>
+</head>
+
+<body>
+    <h1>Joyeuse Saint Valentin</h1>
+    <nav>
+        <ul>
+            <li><a href="#heart">How much do I love you?</a></li>
+            <li><a href="#time_since">How much time?</a></li>
+            <li><a href="#text">A beautiful text for you to read</a></li>
+            <li><a href="#date_ideas">Date generator</a></li>
+        </ul>
+    </nav>
+
+    <section id="heart">
+        <h2>I love you THIS big:</h2>
+        <svg width=400 height=400>
+            <image href="heart.png" class="heart1" x="200" y="200" width="400" height="400" />
+            <image href="heart2.png" class="heart2" x="225" y="225" width="350" height="350" />
+            <image href="heart.png" class="heart3" x="250" y="250" width="300" height="300" />
+            <image href="heart2.png" class="heart4" x="275" y="275" width="250" height="250" />
+            <image href="heart.png" class="heart5" x="300" y="300" width="200" height="200" />
+            <image href="heart2.png" class="heart6" x="325" y="325" width="150" height="150" />
+            <image href="heart.png" class="heart7" x="350" y="350" width="100" height="100" />
+            <text x="185" y="200" font-size="" fill="White">hihi</text>
+            <image href="heart2.png" class="heart8" x="375" y="375" width="50" height="50" />
+        </svg>
+    </section>
+    
+    <section id="time_since">
+        <h2>How much time since...?</h2>
+        <div id="chrono1">00:00:00</div>
+        <p>Since our first kiss on the train station...</p>
+
+        <div id="chrono2">00:00:00</div>
+        <p>Since our first french kiss...</p>
+
+        <div id="chrono3">00:00:00</div>
+        <p>Since you became my fiancé...</p>
+    </section>
+
+    <section id="text">
+        <h2>For you to read :3</h2>
+        <p>Tu remplis mon corps de chaleurs délicieuses<br>
+        Tu me connais par cœur, me récite, me pleure<br>
+        Chaque jour en ta compagnie devient une heure<br>
+        Tu ébloui mes yeux d'une douceur lumineuse <br>
+        <p>
+        Et me carresse avec tes lèvres sucrées<br>
+        Ton joli nez courbé respire mon parfum <br>
+        Mon esprit perdu, rêveur, se souvient du tiens<br> 
+        Une huile essentielle de bonheur enjoué<br>
+        <p>
+        Tes cheveux disposés en forme d'océan <br>
+        D'une couleur d'incendie aux reflets d'argent <br>
+        Font pâlir le soleil couchant de décembre <br>
+        <p>    
+        Tes délicates mains douces au toucher de miel<br>
+        Me font frémir de plaisir et m'ensorcele <br>
+        Amour, plus qu'hier et moins que demain, je t'aime<br>
+    </p>
+    </p>
+    </p>
+    </p>
+    </section>
+
+    <section id="date_ideas">
+        <h2>Date ideas...</h2>
+        <p>In this form, you can create the perfect date:</p>
+    
+        <h3>Create Your Romantic Date 💖</h3>
+        <form id="dateForm">
+            <label for="date">Choose Date:</label>
+            <input type="date" id="date" required>
+            
+            <label for="place">Place:</label>
+            <input type="text" id="place" placeholder="ex: cine, resto, bord du lac" required>
+            
+            <label for="duration">Duration (in hours):</label>
+            <input type="number" id="duration" min="1" max="48" required>
+    
+            <label for="dateType">Type of Date:</label>
+            <select id="dateType">
+                <option value="Run">Run</option>
+                <option value="Gym">Gym</option>
+                <option value="Walk">Walk</option>
+                <option value="Streetpark">Streetpark</option>
+                <option value="Picnic">Picnic</option>
+                <option value="Stargazing">Stargazing</option>
+                <option value="Surprise Adventure">Surprise Adventure</option>
+                <option value="Dinner Date">Dinner Date</option>
+                <option value="Play GTA">Play GTA</option>
+                <option value="Play Mario Kart">Play Mario Kart</option>
+                <option value="Spa">Spa</option>
+                <option value="Cooking">Cooking</option>
+                <option value="Baking">Baking</option>
+                <option value="Netflix & Chill">Netflix & Chill</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Museum">Museum</option>
+                <option value="Beach">Beach</option>
+                <option value="Pool">Pool</option>
+                <option value="Lake">Lake</option>
+                <option value="River">River</option>
+                <option value="Mountain">Mountain</option>
+                <option value="Other">Other...</option>
+            </select>
+    
+            <label>
+                Fuck2n8? ❤️<input type="checkbox" id="fuck"> 
+            </label>
+            
+            <button type="submit">Create Date</button>
+        </form>
+
+        <div id="output"></div>
+
+    </section>
+
+    <button id="backToTop" onclick="scrollToTop()">↑</button>
+
+
+    <script>
+        function startChronometer(startDate, id) {
+            function updateChronometer() {
+                const now = new Date();
+                const elapsed = now - startDate;
+
+                const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((elapsed / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((elapsed / (1000 * 60)) % 60);
+                const seconds = Math.floor((elapsed / 1000) % 60);
+
+                document.getElementById(id).textContent =
+                    `${days} days, ${hours.toString().padStart(2, '0')}:` +
+                    `${minutes.toString().padStart(2, '0')}:` +
+                    `${seconds.toString().padStart(2, '0')}`;
+
+                const chronoElement = document.getElementById(id);
+                chronoElement.style.transform = "scale(1.1)";
+                setTimeout(() => chronoElement.style.transform = "scale(1)", 150);
+            }
+
+            setInterval(updateChronometer, 1000);
+            updateChronometer();
+        }
+
+        const day_we_met = new Date(2020, 1, 20, 15, 0, 0); 
+        startChronometer(day_we_met, "chrono1");
+
+        const day_we_kissed = new Date(2020, 3, 11, 0, 0, 0); 
+        startChronometer(day_we_kissed, "chrono2");
+
+        const day_fiance = new Date(2023, 11, 25, 18, 0, 0); 
+        startChronometer(day_fiance, "chrono3");
+
+
+
+        document.getElementById("dateForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const date = document.getElementById("date").value;
+            const place = document.getElementById("place").value;
+            const duration = document.getElementById("duration").value;
+            const dateType = document.getElementById("dateType").value;
+            const fuck = document.getElementById("fuck").checked ? "Yes" : "No";
+
+            document.getElementById("output").innerHTML = 
+                `❤️ Your Romantic Date Plan: <br> 
+                📅 Date: ${date} <br> 
+                📍 Place: ${place} <br> 
+                ⏳ Duration: ${duration} hours <br> 
+                💑 Type: ${dateType} <br> 
+                ❤️ Fuck2n8 ?: ${fuck}`;
+        });
+
+        window.onscroll = function() {
+            const button = document.getElementById("backToTop");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                button.style.display = "block";
+            } else {
+                button.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function createPopup() {
+            const popup = document.createElement("div");
+            popup.classList.add("popup");
+            popup.innerHTML = `
+                <p>I love you 💖</p>
+                <button onclick="this.parentElement.remove()">Me too!</button>
+            `;
+
+            const maxX = window.innerWidth - 150;
+            const maxY = window.innerHeight - 100; 
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            popup.style.left = `${randomX}px`;
+            popup.style.top = `${randomY}px`;
+
+            document.body.appendChild(popup);
+        }
+
+        setInterval(createPopup, 15000);
+
+    </script>
+
+</body>
+</html>
+
+
+    
+
