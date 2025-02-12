@@ -1,6 +1,7 @@
 
 
 *{
+    font-size: 2vw;
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
     background-color: #ffbada;
@@ -9,6 +10,7 @@
 }
 
 h1{
+    text-size-adjust: auto;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
     margin: 1.5em;
@@ -31,12 +33,12 @@ h2{
 }
 
 nav{
+    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     color: #6e0f0f;
     font-size: large;
-    padding: 30px;
-    margin: 20px;
+   
 }
 
 ul {
@@ -46,11 +48,11 @@ ul {
 }
 
 li{
+    white-space: nowrap;
+    font-size: 1em;
     color: #6e0f0f;
-    content: "";
     display: inline-block;
     text-align: left;
-    padding: 3px;
 }
 
 #text {
@@ -87,7 +89,7 @@ h3{
 }
 
 form{
-    width: 50%;
+    size: 8vw;
     display: flex;
     size-adjust: 10px;
     flex-direction: column;
@@ -162,12 +164,6 @@ image {
     opacity: 0;
 }
 
-body {
-    color: #6e0f0f;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 50px;
-}
 
 div {
     display: inline-block;
@@ -215,6 +211,7 @@ body {
        
       
 form {
+    size-adjust: auto 100px;
     display: inline-block;
     text-align: center;
     padding: 20px;
