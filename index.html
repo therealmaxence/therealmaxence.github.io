@@ -195,15 +195,17 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        let activePopups = 0;
+
         function createPopup() {
             const popup = document.createElement("div");
             popup.classList.add("popup");
             popup.innerHTML = `
                 <p>I love you 💖</p>
-                <button onclick="this.parentElement.remove()">Me too!</button>
+                <button onclick="removePopup(this)">Me too!</button>
             `;
 
-            const maxX = window.innerWidth - 150;
+            const maxX = window.innerWidth - 150; 
             const maxY = window.innerHeight - 100; 
             const randomX = Math.floor(Math.random() * maxX);
             const randomY = Math.floor(Math.random() * maxY);
@@ -212,15 +214,46 @@
             popup.style.top = `${randomY}px`;
 
             document.body.appendChild(popup);
+            activePopups++;
+
+            if (activePopups >= 5) {
+                alert("You don't love me anymore ?????");
+                removeAllPopups();
+            }
         }
 
-        setInterval(createPopup, 15000);
+        function removePopup(button) {
+            button.parentElement.remove();
+            activePopups--;
+        }
 
+        function removeAllPopups() {
+            document.querySelectorAll(".popup").forEach(popup => popup.remove());
+            activePopups = 0; 
+        }
+
+        setInterval(createPopup, 20000);
+
+        function createFallingHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+
+            const startX = Math.random() * window.innerWidth;
+            const duration = Math.random() * 3 + 2;
+            const size = Math.random() * 15 + 10;
+
+            heart.style.left = `${startX}px`;
+            heart.style.fontSize = `${size}px`;
+            heart.style.animationDuration = `${duration}s`;
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, duration * 1000);
+        }
+
+        setInterval(createFallingHeart, 300);
     </script>
 
 </body>
 </html>
-
-
-    
-
