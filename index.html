@@ -126,8 +126,28 @@
 
     <button id="backToTop" onclick="scrollToTop()">↑</button>
 
-
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
+        (function(){
+            emailjs.init({
+                publicKey: "5RYBSBlmbgOnfXSvi",
+            });
+        })();
+
+        function sendMail(subject, message) {
+            emailjs.send('service_j1tvd8v', 'template_vz7a2un', {
+                subject : subject,
+                message : message
+            }).then(
+                (response) => {
+                    console.log('SUCCESS!', response.status, response.text);
+                },
+                (error) => {
+                    console.log('FAILED...', error);
+                },
+            );
+        }
+        
         function startChronometer(startDate, id) {
             function updateChronometer() {
                 const now = new Date();
@@ -171,14 +191,19 @@
             const duration = document.getElementById("duration").value;
             const dateType = document.getElementById("dateType").value;
             const fuck = document.getElementById("fuck").checked ? "Yes" : "No";
+        
+            subject = "New Date programmed! ❤️"
+            message =  `❤️ Your Romantic Date Plan: <br> 
+                        📅 Date: ${date} <br> 
+                        📍 Place: ${place} <br> 
+                        ⏳ Duration: ${duration} hours <br> 
+                        💑 Type: ${dateType} <br> 
+                        ❤️ Fuck2n8 ?: ${fuck}`;
 
-            document.getElementById("output").innerHTML = 
-                `❤️ Your Romantic Date Plan: <br> 
-                📅 Date: ${date} <br> 
-                📍 Place: ${place} <br> 
-                ⏳ Duration: ${duration} hours <br> 
-                💑 Type: ${dateType} <br> 
-                ❤️ Fuck2n8 ?: ${fuck}`;
+            sendMail(subject, message.replace(/<br>/g, "\n"));
+
+            document.getElementById("output").innerHTML = message;
+                
         });
 
         window.onscroll = function() {
@@ -232,7 +257,7 @@
             activePopups = 0; 
         }
 
-        //setInterval(createPopup, 20000);
+        setInterval(createPopup, 15000);
 
         function createFallingHeart() {
             const heart = document.createElement("div");
