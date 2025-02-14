@@ -90,6 +90,7 @@
             <label for="dateType">Type of Date:</label>
             <select id="dateType">
                 <option value="Run">Run</option>
+                <option value="Cine">Cine</option>
                 <option value="Gym">Gym</option>
                 <option value="Walk">Walk</option>
                 <option value="Streetpark">Streetpark</option>
@@ -110,6 +111,7 @@
                 <option value="Lake">Lake</option>
                 <option value="River">River</option>
                 <option value="Mountain">Mountain</option>
+                <option value="Camping">Camping</option>
                 <option value="Other">Other...</option>
             </select>
     
@@ -130,24 +132,22 @@
     <script>
         (function(){
             emailjs.init({
-                publicKey: "5RYBSBlmbgOnfXSvi",
+                publicKey: "MOUVyvJ4yRhodMUhI",
             });
         })();
 
         function sendMail(subject, message) {
-            emailjs.send('service_j1tvd8v', 'template_vz7a2un', {
-                subject : subject,
-                message : message
-            }).then(
-                (response) => {
-                    console.log('SUCCESS!', response.status, response.text);
-                },
-                (error) => {
-                    console.log('FAILED...', error);
-                },
-            );
-        }
-        
+            const emailData = {
+                subject: subject,
+                message: message
+            };
+
+            emailjs.send('service_s1jq6a3', 'template_hl074ga', { ...emailData, to_email: "salome.an.falco@gmail.com" })
+                .then(response => console.log('Mail sent!', response.status, response.text))
+                .catch(error => console.log('Failed to send', error));
+            }
+
+
         function startChronometer(startDate, id) {
             function updateChronometer() {
                 const now = new Date();
@@ -192,7 +192,7 @@
             const dateType = document.getElementById("dateType").value;
             const fuck = document.getElementById("fuck").checked ? "Yes" : "No";
         
-            subject = "New Date programmed! ❤️"
+            subject = "New Date programmed! 💌"
             message =  `❤️ Your Romantic Date Plan: <br> 
                         📅 Date: ${date} <br> 
                         📍 Place: ${place} <br> 
@@ -201,6 +201,7 @@
                         ❤️ Fuck2n8 ?: ${fuck}`;
 
             sendMail(subject, message.replace(/<br>/g, "\n"));
+
 
             document.getElementById("output").innerHTML = message;
                 
